@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Compressed CSS Foundation -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Document</title>
 </head>
@@ -13,14 +12,17 @@
     <header class="title-bar align-center">
         <h1>Weather Finder</h1>
     </header>
-    <div class="grid-x">
-        <div class="cell small-3" id="search-area">
-            <input type="text">
+    <div class="grid-x" id="search-area">
+        <div class="cell small-3">
+            <form action="">
+                <input type="text" placeholder="Enter a City Name">
+                <button class="button" type="submit">Search</button>
+            </form>
         </div>
     </div>
+    <div class="container" id="current weather"></div>
+    <div class="container" id="forecast"></div>
 
-    <!-- Compressed JavaScript foundation -->
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
