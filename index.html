@@ -9,19 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="title-bar align-center">
+    <header class="jumbotron text-center">
         <h1>Weather Finder</h1>
     </header>
-    <div class="grid-x" id="search-area">
-        <div class="cell small-3">
-            <form action="">
-                <input type="text" placeholder="Enter a City Name">
-                <button class="button" type="submit">Search</button>
-            </form>
-        </div>
+    <div class="col-sm-3" id="search-area">
+        <form>
+            <input type="text" placeholder="Enter a City Name">
+            <button class="btn-primary" type="submit">Search</button>
+        </form>
+        <div id="search-history"></div>
     </div>
-    <div class="container" id="current weather"></div>
-    <div class="container" id="forecast"></div>
+    <div class="container col-sm-8" id="current-weather"></div>
+    <div class="container col-sm-8" id="forecast"></div>
 
     <script src="./assets/js/script.js"></script>
 </body>

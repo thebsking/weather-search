@@ -2,3 +2,11 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+.container {
+    border: 1px black solid;
+    min-height: 300px;
+}
+#search-area {
+    height: 100vh;
+}
