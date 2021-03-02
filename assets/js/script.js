@@ -10,10 +10,15 @@ let searchBtn = document.querySelector('button');
 searchBtn.addEventListener('click', function(event){
     event.preventDefault();
     let userCity = searchInput.value;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}`;
+    //add search to history list
+    
+    //fetch weather data
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
     fetch(apiUrl)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);            
+        })
     console.log(userCity)
 });
 
