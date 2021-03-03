@@ -26,14 +26,17 @@ function displayResults() {
     currentEl.appendChild(humidity);
 }
 
-function secondCall(lati, long){
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=`+lati+`&lon=`+long+`&exclude=minutely,hourly,alerts&appid=${apiKey}`)
+function secondCall(lat, lon){
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
         .then(data => {
             secondCurrent = data
             let uvIndex = document.createElement('span');
-            uvIndex.textContent = secondCurrent.current.uvi;
+            uvIndex.textContent = 'UV Index: ' + secondCurrent.current.uvi;
             currentEl.appendChild(uvIndex).classList.add('uv-index')
+            let forecast = document.createElement('div')
+            forecast.innerText = 'Tomorrow\'s High: ' + secondCurrent.daily[0].temp.day;
+            forecastEl.appendChild(forecast).classList.add('card')
             console.log(data);
         })
 }
