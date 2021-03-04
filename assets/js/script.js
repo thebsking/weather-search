@@ -1,70 +1,43 @@
 //declare variables
-let apiKey = 'e488a40323177664f2fc7533181baeb8'
+let key = 'e488a40323177664f2fc7533181baeb8'
 let historyEl = document.querySelector('#search-history');
 let currentEl = document.querySelector('#current-weather');
 let forecastEl = document.querySelector('#forecast');
 let searchInput = document.querySelector('input');
 let searchBtn = document.querySelector('button');
-let currentResults;
-let secondCurrent;
+let userCity;
+let firstData;
+let secondData;
 
-function displayResults() {
-    //create elements for results
-    let cityName = document.createElement('h2');
-    cityName.textContent = currentResults.name;
-    let temp = document.createElement('p');
-    temp.textContent = 'Temperature: ' + Math.floor(currentResults.main.temp) + 'ºF';
-    let humidity = document.createElement('p');
-    humidity.textContent = 'Humidity: ' + currentResults.main.humidity + '%';
-    let wind = document.createElement('p');
-    wind.textContent = 'Wind Speed: ' + currentResults.wind.speed + 'MPH';
-    
-
-    //append results to page
-    currentEl.appendChild(cityName);
-    currentEl.appendChild(temp);
-    currentEl.appendChild(humidity);
-}
-
-function secondCall(lat, lon){
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=imperial`)
+function firstApiCall() {
+    userCity = searchInput.value;
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${key}&units=imperial`)
         .then(response => response.json())
         .then(data => {
-            secondCurrent = data
-            let uvIndex = document.createElement('span');
-            uvIndex.textContent = 'UV Index: ' + secondCurrent.current.uvi;
-            currentEl.appendChild(uvIndex).classList.add('uv-index')
-            let forecast = document.createElement('div')
-            forecast.innerText = 'Tomorrow\'s High: ' + secondCurrent.daily[0].temp.day;
-            forecastEl.appendChild(forecast).classList.add('card')
-            console.log(data);
+            console.log(data)
+            firstData = data;
+            secondApiCall(firstData.coord.lat, firstData.coord.lon);
+        })
+    
+};
+
+function secondApiCall(lati, long){
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&exclude=minutely,hourly,alerts&appid=${key}`)
+        .then(response => response.json())
+        .then(data => {
+            secondData = data;
+            console.log(secondData)
         })
 }
 
 //search click event
 searchBtn.addEventListener('click', function(event){
     event.preventDefault();
-    let userCity = searchInput.value;
-    
+   firstApiCall();
     //add search to history list
     let historyItem = document.createElement('button')
     historyItem.textContent = userCity
     historyItem.classList.add('historyBtn')
-    historyEl.appendChild(historyItem)
-    
-    //fetch weather data
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${apiKey}&units=imperial`;
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            currentResults = data;
-            console.log(data);
-            secondCall(currentResults.coord.lat, currentResults.coord.lon);
-            displayResults();  
-
-        })
-    console.log(userCity)
-    
-});
-
+    historyEl.appendChild(historyItem);
+})
 
