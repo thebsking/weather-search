@@ -7,13 +7,13 @@ let searchInput = document.querySelector('input');
 let searchBtn = document.querySelector('button');
 let today = moment().format('MM/DD/yyyy');
 let index = 0;
-let userCity;
+
 let firstData;
 let secondData;
 
-function firstApiCall() {
-    userCity = searchInput.value;
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userCity}&appid=${key}&units=imperial`)
+function firstApiCall(city) {
+    city = searchInput.value;
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -46,7 +46,7 @@ searchBtn.addEventListener('click', function(event){
     
     //add search to history list
     let historyItem = document.createElement('button')
-    historyItem.textContent = userCity
+    historyItem.textContent = searchInput.value
     historyItem.classList.add('historyBtn')
     historyItem.setAttribute('id', `item-${index}`)
     index++;
@@ -69,5 +69,7 @@ if (window.localStorage.length > 0) {
 
 //click event for history items
 historyEl.addEventListener('click', function(event){
-    
+    searchInput.value = event.target.textContent
+    currentEl.innerHTML = ''
+    firstApiCall()
 })
