@@ -66,3 +66,8 @@ if (window.localStorage.length > 0) {
         historyEl.appendChild(historyItem);
     }
 }
+
+//click event for history items
+historyEl.addEventListener('click', function(event){
+    
+})
