@@ -3,10 +3,7 @@
     margin: 0;
 }
 
-.container {
-    border: 1px black solid;
-    min-height: 300px;
-}
+
 .historyBtn {
     width: 80%;
 }
