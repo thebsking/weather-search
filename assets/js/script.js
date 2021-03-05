@@ -55,6 +55,22 @@ function showCurrent() {
     uvIndex = document.createElement('span')
     uvIndex.textContent = secondData.current.uvi
     showUvi.appendChild(uvIndex)
+
+    showFuture()
+}
+
+function showFuture() {
+    for(var i = 1; i < 6; i++){
+        let futureDay = secondData.daily[i];
+        newDay = today + 1;
+        let futureCard = document.createElement('div').classList.add('card').setAttribute('id', `day-${i}`)
+        forecastEl.appendChild(futureCard)
+        futureCard.appendChild()
+
+        futureDay.temp.day
+        futureDay.humidity
+
+    }
 }
 
 //search click event
