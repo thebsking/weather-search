@@ -38,7 +38,7 @@ function showCurrent() {
     currentEl.appendChild(showCity)
 
     showTemp = document.createElement('h3')
-    showTemp.textContent = 'Temperature: ' + Math.floor(firstData.main.temp) + 'º';
+    showTemp.textContent = 'Temperature: ' + Math.floor(firstData.main.temp) + 'ºF';
     currentEl.appendChild(showTemp)
 
     showHumid = document.createElement('p');
@@ -84,7 +84,7 @@ function showCurrent() {
         futureDate.textContent = newDay.format('MM/DD/yyyy');
         futureCard.appendChild(futureDate)
         let futureTemp = document.createElement('p')
-        futureTemp.textContent = `Temperature: ${futureDay.temp.day}`
+        futureTemp.textContent = `Temperature: ${futureDay.temp.day}ºF`
         let futureHumid = document.createElement('p')
         futureHumid.textContent = `Humidity: ${futureDay.humidity}%`
         futureCard.appendChild(futureTemp)
@@ -128,5 +128,6 @@ historyEl.addEventListener('click', function(event){
     currentEl.innerHTML = ''
     forecastEl.innerHTML = ''
     firstApiCall()
+    searchInput.value = ''
 })
 
