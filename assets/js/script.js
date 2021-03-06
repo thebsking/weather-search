@@ -56,15 +56,20 @@ function showCurrent() {
     uvIndex.textContent = secondData.current.uvi
     showUvi.appendChild(uvIndex)
 
+    
+    showFuture()
+}
 
+ function showFuture() {
     for(var i = 1; i < 6; i++){
         let futureDay = secondData.daily[i];
         newDay = moment().add(i, 'days') ;
         let futureCard = document.createElement('div')
         futureCard.setAttribute('id', `day-${i}`)
-        futureCard.classList.add('card')
+        futureCard.classList.add('card', 'forecast-card')
         forecastEl.appendChild(futureCard)
         let futureDate = document.createElement('h3')
+        //futureDate.classList.add('card-header')
         futureDate.textContent = newDay.format('MM/DD/yyyy');
         futureCard.appendChild(futureDate)
         let futureTemp = document.createElement('p')
@@ -74,16 +79,13 @@ function showCurrent() {
         futureCard.appendChild(futureTemp)
         futureCard.appendChild(futureHumid)
 
-    }
-    //showFuture()
-}
-
-// function showFuture() {}
+}}
 
 //search click event
 searchBtn.addEventListener('click', function(event){
     event.preventDefault();
     currentEl.innerHTML = ''
+    forecastEl.innerHTML = ''
     firstApiCall();
     
     //add search to history list
@@ -113,5 +115,6 @@ if (window.localStorage.length > 0) {
 historyEl.addEventListener('click', function(event){
     searchInput.value = event.target.textContent
     currentEl.innerHTML = ''
+    forecastEl.innerHTML = ''
     firstApiCall()
 })

@@ -3,11 +3,36 @@
     margin: 0;
 }
 
+.row{
+    margin: 0 5px;
+}
 
 .historyBtn {
-    width: 80%;
+    width: 100%;
 }
 .uv-index {
     padding: 5px;
     background-color: green;
+}
+#current-weather {
+    padding: 15px;   
+}
+#forecast {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+    flex-wrap: wrap;
+}
+#forecast h3 {
+    font-size: 15px;
+    text-align: center;
+}
+.card p{
+    padding: 0 5px;
+}
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
 }
