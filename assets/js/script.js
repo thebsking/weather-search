@@ -109,7 +109,14 @@ function showCurrent() {
         futureCard.appendChild(futureHumid)
 
         window.location = './index.html#current-weather'
-
+        let checkHistory = document.querySelectorAll('.historyBtn')
+        for(var j = 0; j < checkHistory.length; j++){
+            if (checkHistory[j].textContent == firstData.name) {
+                checkHistory[j].classList.add('active')
+            } else {
+                checkHistory[j].classList.remove('active')
+            }
+        }
 }}
 
 //search click event

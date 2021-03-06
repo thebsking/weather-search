@@ -26,7 +26,7 @@ body {
     margin-top: 2px;
     padding: 10px;
 }
-.historyBtn:hover {
+.historyBtn:hover, .active{
     background-color: tomato;
     color: white;
 }
