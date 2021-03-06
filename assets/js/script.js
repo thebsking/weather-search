@@ -12,7 +12,7 @@ let secondData;
 
 function firstApiCall(city) {
     city = searchInput.value;
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -44,7 +44,7 @@ function showCurrent() {
     let iconCode = firstData.weather[0].icon
     let iconDisplay = document.createElement('img')
     iconDisplay.classList.add('weather-image')
-    iconDisplay.setAttribute('src', `http://openweathermap.org/img/w/${iconCode}.png`)
+    iconDisplay.setAttribute('src', `https://openweathermap.org/img/w/${iconCode}.png`)
     currentEl.append(iconDisplay)
 
     showHumid = document.createElement('p');
@@ -96,7 +96,7 @@ function showCurrent() {
 
         let iconCode = futureDay.weather[0].icon;
         let iconDisplay = document.createElement('img')
-        iconDisplay.setAttribute('src', `http://openweathermap.org/img/w/${iconCode}.png`)
+        iconDisplay.setAttribute('src', `https://openweathermap.org/img/w/${iconCode}.png`)
         iconDisplay.classList.add('weather-image')
         futureCard.append(iconDisplay)
     
