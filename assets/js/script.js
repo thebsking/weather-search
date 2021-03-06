@@ -108,6 +108,8 @@ function showCurrent() {
         futureCard.appendChild(futureTemp)
         futureCard.appendChild(futureHumid)
 
+        window.location = './index.html#current-weather'
+
 }}
 
 //search click event
