@@ -6,7 +6,7 @@ let forecastEl = document.querySelector('#forecast');
 let searchInput = document.querySelector('input');
 let searchBtn = document.querySelector('button');
 let today = moment().format('MM/DD/yyyy');
-let index = 0;
+let index = window.localStorage.length;
 let firstData;
 let secondData;
 
@@ -122,7 +122,6 @@ searchBtn.addEventListener('click', function(event){
     historyItem.textContent = searchInput.value
     historyItem.classList.add('historyBtn')
     historyItem.setAttribute('id', `item-${index}`)
-    index++;
     historyEl.appendChild(historyItem);
     window.localStorage.setItem(historyItem.getAttribute('id'), searchInput.value)
     searchInput.value = '';
