@@ -10,9 +10,8 @@
 .historyBtn {
     width: 100%;
 }
-.uv-index {
-    padding: 5px;
-    background-color: green;
+.index-num {
+    padding: 8px;
 }
 #current-weather {
     padding: 15px;   

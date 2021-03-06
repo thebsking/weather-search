@@ -31,7 +31,7 @@ function secondApiCall(lati, long){
         })
     
 }
-
+//render current weather conditions
 function showCurrent() {
     showCity = document.createElement('h2');
     showCity.textContent = firstData.name + ' (' + today + ') ' 
@@ -53,13 +53,24 @@ function showCurrent() {
     showUvi.textContent = 'UV Index: '
     currentEl.appendChild(showUvi)
     uvIndex = document.createElement('span')
+    uvIndex.classList.add('index-num')
     uvIndex.textContent = secondData.current.uvi
     showUvi.appendChild(uvIndex)
+
+    //if function to change uv index color
+    let indexCheck = document.querySelector('.index-num');
+    if (indexCheck.textContent < 3) {
+        indexCheck.setAttribute('style', 'background-color:green;color:white')
+    } else if (indexCheck.textContent <= 6)  {
+        indexCheck.setAttribute('style', 'background-color:orange')
+    } else {
+        indexCheck.setAttribute('style', 'background-color:red')
+    }
 
     
     showFuture()
 }
-
+ //render forecast conditions
  function showFuture() {
     for(var i = 1; i < 6; i++){
         let futureDay = secondData.daily[i];
@@ -118,3 +129,4 @@ historyEl.addEventListener('click', function(event){
     forecastEl.innerHTML = ''
     firstApiCall()
 })
+
