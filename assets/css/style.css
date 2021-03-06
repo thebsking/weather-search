@@ -11,6 +11,10 @@ body {
 .jumbotron {
     padding: 5px;
 }
+.search-title {
+    color: white;
+    font-size: larger;
+}
 #search-history {
     margin-bottom: 5px;
 }
