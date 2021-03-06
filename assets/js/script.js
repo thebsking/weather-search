@@ -40,6 +40,11 @@ function showCurrent() {
     showTemp = document.createElement('h3')
     showTemp.textContent = 'Temperature: ' + Math.floor(firstData.main.temp) + 'ºF';
     currentEl.appendChild(showTemp)
+    let iconCode = firstData.weather[0].icon
+    let iconDisplay = document.createElement('img')
+    iconDisplay.classList.add('weather-image')
+    iconDisplay.setAttribute('src', `http://openweathermap.org/img/w/${iconCode}.png`)
+    currentEl.append(iconDisplay)
 
     showHumid = document.createElement('p');
     showHumid.textContent = `Humidity: ${firstData.main.humidity}%`;
@@ -80,9 +85,16 @@ function showCurrent() {
         futureCard.classList.add('card', 'forecast-card')
         forecastEl.appendChild(futureCard)
         let futureDate = document.createElement('h3')
-        //futureDate.classList.add('card-header')
         futureDate.textContent = newDay.format('MM/DD/yyyy');
         futureCard.appendChild(futureDate)
+
+        let iconCode = futureDay.weather[0].icon;
+        let iconDisplay = document.createElement('img')
+        iconDisplay.setAttribute('src', `http://openweathermap.org/img/w/${iconCode}.png`)
+        iconDisplay.classList.add('weather-image')
+        futureCard.append(iconDisplay)
+    
+
         let futureTemp = document.createElement('p')
         futureTemp.textContent = `Temperature: ${futureDay.temp.day}ºF`
         let futureHumid = document.createElement('p')
