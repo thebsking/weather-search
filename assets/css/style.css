@@ -2,13 +2,25 @@
     box-sizing: border-box;
     margin: 0;
 }
-
+body {
+    background-color: #333;
+}
 .row{
     margin: 0 5px;
 }
-
+.jumbotron {
+    padding: 5px;
+}
 .historyBtn {
     width: 100%;
+    background-color: aquamarine;
+    color: black;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+.historyBtn:hover {
+    background-color: tomato;
+    color: white;
 }
 .index-num {
     padding: 8px;
@@ -34,11 +46,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: fit-content;
+    background-color: rgba(200, 200, 200, 0.5);
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    box-shadow: #000 1px 1px 1px 1px;
+    box-shadow: #bbb 1px 1px 1px 1px;
 }
 .weather-image {
     width: 80px;

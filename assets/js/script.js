@@ -33,6 +33,7 @@ function secondApiCall(lati, long){
 }
 //render current weather conditions
 function showCurrent() {
+    currentEl.setAttribute('style', 'background-color:rgba(255,253,250,0.7)')
     showCity = document.createElement('h2');
     showCity.textContent = firstData.name + ' (' + today + ') ' 
     currentEl.appendChild(showCity)
@@ -81,6 +82,7 @@ function showCurrent() {
     forecastTitle.textContent = '5-Day Forecast'
     forecastEl.appendChild(forecastTitle)
     forecastTitle.setAttribute('style', 'width:100%')
+    forecastTitle.classList.add('text-white')
     for(var i = 1; i < 6; i++){
         let futureDay = secondData.daily[i];
         newDay = moment().add(i, 'days') ;
