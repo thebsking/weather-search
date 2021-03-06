@@ -11,6 +11,9 @@ body {
 .jumbotron {
     padding: 5px;
 }
+#search-history {
+    margin-bottom: 5px;
+}
 .historyBtn {
     width: 100%;
     background-color: aquamarine;
