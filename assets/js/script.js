@@ -127,6 +127,7 @@ searchBtn.addEventListener('click', function(event){
     historyEl.appendChild(historyItem);
     window.localStorage.setItem(historyItem.getAttribute('id'), searchInput.value)
     searchInput.value = '';
+    index = window.localStorage.length;
 })
 
 //display search history on reload
