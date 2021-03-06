@@ -22,7 +22,7 @@ function firstApiCall(city) {
 };
 
 function secondApiCall(lati, long){
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&exclude=minutely,hourly,alerts&appid=${key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lati}&lon=${long}&exclude=minutely,hourly,alerts&appid=${key}&units=imperial`)
         .then(response => response.json())
         .then(data => {
             secondData = data;
@@ -56,22 +56,29 @@ function showCurrent() {
     uvIndex.textContent = secondData.current.uvi
     showUvi.appendChild(uvIndex)
 
-    showFuture()
-}
 
-function showFuture() {
     for(var i = 1; i < 6; i++){
         let futureDay = secondData.daily[i];
-        newDay = today + 1;
-        let futureCard = document.createElement('div').classList.add('card').setAttribute('id', `day-${i}`)
+        newDay = moment().add(i, 'days') ;
+        let futureCard = document.createElement('div')
+        futureCard.setAttribute('id', `day-${i}`)
+        futureCard.classList.add('card')
         forecastEl.appendChild(futureCard)
-        futureCard.appendChild()
-
-        futureDay.temp.day
-        futureDay.humidity
+        let futureDate = document.createElement('h3')
+        futureDate.textContent = newDay.format('MM/DD/yyyy');
+        futureCard.appendChild(futureDate)
+        let futureTemp = document.createElement('p')
+        futureTemp.textContent = `Temperature: ${futureDay.temp.day}`
+        let futureHumid = document.createElement('p')
+        futureHumid.textContent = `Humidity: ${futureDay.humidity}%`
+        futureCard.appendChild(futureTemp)
+        futureCard.appendChild(futureHumid)
 
     }
+    //showFuture()
 }
+
+// function showFuture() {}
 
 //search click event
 searchBtn.addEventListener('click', function(event){
