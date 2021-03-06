@@ -77,6 +77,10 @@ function showCurrent() {
 }
  //render forecast conditions
  function showFuture() {
+    let forecastTitle = document.createElement('h2')
+    forecastTitle.textContent = '5-Day Forecast'
+    forecastEl.appendChild(forecastTitle)
+    forecastTitle.setAttribute('style', 'width:100%')
     for(var i = 1; i < 6; i++){
         let futureDay = secondData.daily[i];
         newDay = moment().add(i, 'days') ;
@@ -84,7 +88,7 @@ function showCurrent() {
         futureCard.setAttribute('id', `day-${i}`)
         futureCard.classList.add('card', 'forecast-card')
         forecastEl.appendChild(futureCard)
-        let futureDate = document.createElement('h3')
+        let futureDate = document.createElement('h5')
         futureDate.textContent = newDay.format('MM/DD/yyyy');
         futureCard.appendChild(futureDate)
 
